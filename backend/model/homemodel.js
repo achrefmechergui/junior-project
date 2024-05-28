@@ -1,5 +1,5 @@
 const db = require("../database.js");
-const { options } = require("../routes/foudroutes.js");
+const { options } = require("../routes/foodroutes.js");
 
 //// get list of food model :
 

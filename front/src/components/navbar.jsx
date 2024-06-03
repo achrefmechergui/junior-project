@@ -48,11 +48,11 @@ function Navbar(props) {
 
 
     
-<div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+<div className="btn-group">
+  <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
   Category
   </button>
-  <ul class="dropdown-menu">
+  <ul className="dropdown-menu">
     <Link to={'/category'} onClick={()=>{hundelcategory("other recipes")}} className="dropdown-item" >   other recipes</Link>
     <Link onClick={()=>{hundelcategory("pasta")}} className="dropdown-item" to={'/category'} > pasta</Link>
     <Link className="dropdown-item" onClick={()=>{hundelcategory("meat")}} to={'/category'} >  meat</Link>

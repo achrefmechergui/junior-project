@@ -37,23 +37,14 @@ exports.addfoodmodel = async (img, name, description,category) => {
 
 exports.searchfoodmodel = async (name) => {
   try {
-    const result = await db.find({ Name: { $regex: name, $options: "i" } });
+    const result = await db.find({ Name: { $regex: name, $options: "i" } });  //// regular expressions
     return result;
   } catch (err) {
     console.log(err);
   }
 };
 
-//// search by id :
 
-// exports.searchbyidmodel = async (id) => {
-//   try {
-//     const result = await db.findById({ _id: id });
-//     return result;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 //// update a specific information food :
 

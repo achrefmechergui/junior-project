@@ -28,17 +28,7 @@ const Main = (props) => {
     }
   }, [data, props.dataupdated, props.searchdata,props.hundelget]);
 
-  // useEffect(() => {
-  //   if (props.dataupdated.length) {
-  //     setData(props.dataupdated);  /// update the data
-  //   }
-  // }, [props.dataupdated]);
 
-  // useEffect(()=>{
-  //   if (props.searchdata.length) {
-  //     setData(props.searchdata);
-  //   }
-  // },[props.searchdata])
 
   const deletefood = (id) => {
     axios.delete(`http://localhost:5000/delete/${id}`).then((res) => {
@@ -115,7 +105,7 @@ const Main = (props) => {
                      hundelupdateid(element._id);
                    }}
                    type="button"
-                   class="btn btn-success me-3"
+                   className="btn btn-success me-3"
                    data-bs-toggle="modal"
                    data-bs-target="#exampleModal"
                    data-bs-whatever="@mdo"
@@ -127,7 +117,7 @@ const Main = (props) => {
                  <button
                    onClick={() => handleDeleteClick(element.Name, element._id)}
                    type="button"
-                   class="btn btn-danger"
+                   className="btn btn-danger"
                    data-bs-toggle="modal"
                    data-bs-target="#staticBackdrop"
                  >
@@ -139,7 +129,7 @@ const Main = (props) => {
          ))}
          {/* delete modal : */}
          <div
-           class="modal fade"
+           className="modal fade"
            id="staticBackdrop"
            data-bs-backdrop="static"
            data-bs-keyboard="false"
@@ -147,26 +137,26 @@ const Main = (props) => {
            aria-labelledby="staticBackdropLabel"
            aria-hidden="true"
          >
-           <div class="modal-dialog">
-             <div class="modal-content">
-               <div class="modal-header">
-                 <h1 class="modal-title fs-5" id="staticBackdropLabel">
+           <div className="modal-dialog">
+             <div className="modal-content">
+               <div className="modal-header">
+                 <h1 className="modal-title fs-5 fw-bold" id="staticBackdropLabel">
                    {Deletename}
                  </h1>
                  <button
                    type="button"
-                   class="btn-close"
+                   className="btn-close"
                    data-bs-dismiss="modal"
                    aria-label="Close"
                  ></button>
                </div>
-               <div class="modal-body fw-semibold">
+               <div style={{backgroundColor:' #d3d3d3'}} className="modal-body fw-semibold ">
                  Are you sure you want to delete {Deletename} !!!
                </div>
-               <div class="modal-footer">
+               <div className="modal-footer">
                  <button
                    type="button"
-                   class="btn btn-secondary"
+                   className="btn btn-secondary"
                    data-bs-dismiss="modal"
                  >
                    Close
@@ -177,7 +167,7 @@ const Main = (props) => {
                      deletefood(deleteId);
                    }}
                    type="button"
-                   class="btn btn-danger"
+                   className="btn btn-danger"
                  >
                    Delete
                  </button>
@@ -188,31 +178,31 @@ const Main = (props) => {
   
          {/* update modal :  */}
          <div
-           class="modal fade"
+           className="modal fade"
            id="exampleModal"
            tabIndex="-1"
            aria-labelledby="exampleModalLabel"
            aria-hidden="true"
          >
-           <div class="modal-dialog">
-             <div class="modal-content">
-               <div class="modal-header">
-                 <h1 class="modal-title fs-5 fw-bolder" id="exampleModalLabel">
+           <div className="modal-dialog">
+             <div className="modal-content">
+               <div className="modal-header">
+                 <h1 className="modal-title fs-5 fw-bolder" id="exampleModalLabel">
                    Update This Recipe
                  </h1>
                  <button
                    type="button"
-                   class="btn-close"
+                   className="btn-close"
                    data-bs-dismiss="modal"
                    aria-label="Close"
                  ></button>
                </div>
-               <div class="modal-body">
+               <div className="modal-body">
                  <form>
-                   <div class="mb-3">
+                   <div className="mb-3">
                      <label
-                       for="recipient-name"
-                       class="col-form-label fw-medium"
+                       htmlFor="recipient-name"
+                       className="col-form-label fw-medium"
                      >
                        Image:
                      </label>
@@ -223,14 +213,14 @@ const Main = (props) => {
                        }}
                        placeholder="paste the url image here ..."
                        type="text"
-                       class="form-control"
+                       className="form-control"
                        id="recipient-name"
                      />
                    </div>
-                   <div class="mb-3">
+                   <div className="mb-3">
                      <label
-                       for="recipient-name"
-                       class="col-form-label fw-medium"
+                       htmlFor="recipient-name"
+                       className="col-form-label fw-medium"
                      >
                        Name:
                      </label>
@@ -241,12 +231,12 @@ const Main = (props) => {
                        }}
                        placeholder="Name of Recipe ..."
                        type="text"
-                       class="form-control"
+                       className="form-control"
                        id="recipient-name"
                      />
                    </div>
-                   <div class="mb-3">
-                     <label for="message-text" class="col-form-label fw-medium">
+                   <div className="mb-3">
+                     <label htmlFor="message-text" className="col-form-label fw-medium">
                        Description:
                      </label>
                      <textarea
@@ -255,16 +245,16 @@ const Main = (props) => {
                          hundeldescription(e);
                        }}
                        placeholder="Description of Recipe ..."
-                       class="form-control"
+                       className="form-control"
                        id="message-text"
                      ></textarea>
                    </div>
                  </form>
                </div>
-               <div class="modal-footer">
+               <div className="modal-footer">
                  <button
                    type="button"
-                   class="btn btn-secondary"
+                   className="btn btn-secondary"
                    data-bs-dismiss="modal"
                  >
                    Close
@@ -275,7 +265,7 @@ const Main = (props) => {
                      updaterecipe(id);
                    }}
                    data-bs-dismiss="modal"
-                   class="btn btn-success"
+                   className="btn btn-success"
                  >
                    Update
                  </button>

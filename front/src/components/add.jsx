@@ -47,50 +47,50 @@ const Add = (props) => {
 
   return (
     <div className=" w-50 mx-auto addform ">
-      <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-2 col-form-label fw-semibold">
+      <div className="row mb-3">
+        <label htmlFor="inputEmail3" className="col-sm-2 col-form-label fw-semibold">
           Image :
         </label>
-        <div class="col-sm-10">
+        <div className="col-sm-10">
           <input
             onChange={(e) => {
               hundelnewimage(e);
             }}
             placeholder="Put the url of the image..."
             type="text"
-            class="form-control"
+            className="form-control"
             id="inputEmail3"
           />
         </div>
       </div>
-      <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label fw-semibold">
+      <div className="row mb-3">
+        <label htmlFor="inputPassword3" className="col-sm-2 col-form-label fw-semibold">
           Name :
         </label>
-        <div class="col-sm-10">
+        <div className="col-sm-10">
           <input
             onChange={(e) => {
               hundelnewname(e);
             }}
             placeholder="Put the Name of Recipe..."
             type="text"
-            class="form-control"
+            className="form-control"
             id="inputPassword3"
           />
         </div>
       </div>
-      <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label fw-semibold">
+      <div className="row mb-3">
+        <label htmlFor="inputPassword3" className="col-sm-2 col-form-label fw-semibold">
           Description:
         </label>
-        <div class="col-sm-10">
+        <div className="col-sm-10">
           <input
             onChange={(e) => {
               hundelnewdescription(e);
             }}
             type="text"
             placeholder="Put the Description of the recipe..."
-            class="form-control"
+            className="form-control"
             id="inputPassword3"
           />
         </div>
@@ -140,7 +140,7 @@ const Add = (props) => {
           addnewrecipe();
         }}
         type="submit"
-        class="btn btn-primary ms-4  "
+        className="btn btn-primary ms-4  "
       >
         Add New Recipe
       </button>

@@ -15,14 +15,19 @@ exports.getfoodmodel = async () => {
 
 //// add new food to the list :
 
-exports.addfoodmodel = async (img, name, description) => {
+exports.addfoodmodel = async (img, name, description,category) => {
   try {
-    const result = await db.insertMany({
-      Image: img,
-      Name: name,
-      Description: description,
-    });
-    return result;
+    if (img && name && description&&category) {
+      const result = await db.insertMany({
+        Image: img,
+        Name: name,
+        Description: description,
+        category : category
+      });
+      return result;
+    } else {
+      console.log("please insert data");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -41,24 +46,28 @@ exports.searchfoodmodel = async (name) => {
 
 //// search by id :
 
-exports.searchbyidmodel = async (id) => {
-  try {
-    const result = await db.findById({ _id: id });
-    return result;
-  } catch (err) {
-    console.log(err);
-  }
-};
+// exports.searchbyidmodel = async (id) => {
+//   try {
+//     const result = await db.findById({ _id: id });
+//     return result;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 //// update a specific information food :
 
 exports.updatefoodmodel = async (image, name, description, id) => {
   try {
-    const result = await db.updateOne(
-      { _id: id },
-      { Image: image, Name: name, Description: description }
-    );
-    return result;
+    if ((image, name, description)) {
+      const result = await db.updateOne(
+        { _id: id },
+        { Image: image, Name: name, Description: description }
+      );
+      return result;
+    } else {
+      console.log("please insert data");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -74,3 +83,18 @@ exports.deletefoodmodel = async (id) => {
     console.log(err);
   }
 };
+
+
+
+//// serach by category : 
+
+exports.categoryfoodmodel = async (category)=>{
+  try{
+    const result = await db.find({category:category});
+   
+    return result
+
+  } catch(err){
+    console.log(err)
+  }
+}

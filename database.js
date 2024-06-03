@@ -8,6 +8,7 @@ const platformschema = mongoose.Schema({
     Image : String , 
     Name : String,
     Description : String,
+    category :String
 })
 
 const model = mongoose.model('junior',platformschema)

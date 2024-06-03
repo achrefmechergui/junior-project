@@ -6,23 +6,22 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3>À Propos de Nous</h3>
+          <h3>About Us</h3>
           <p>
-            Bienvenue sur notre site de recettes culinaires où nous partageons nos meilleures recettes et astuces de cuisine. Que vous soyez un chef expérimenté ou un débutant, vous trouverez ici quelque chose d'inspirant.
+            
+Welcome to our Italian recipes website where we share our best recipes and cooking tips. Whether you are an experienced chef or a beginner, you will find something inspiring here.
           </p>
         </div>
         <div className="footer-section">
-          <h3>Liens Utiles</h3>
+          <h3>Links</h3>
           <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/recipes">Recettes</a></li>
-            <li><a href="/blog">Blog</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/about">À Propos</a></li>
+            <li><a href="/about">About Us </a></li>
           </ul>
         </div>
         <div className="footer-section">
-          <h3>Suivez-nous</h3>
+          <h3>Follow-us</h3>
           <ul className="social-links">
             <li><a href="https://www.facebook.com">Facebook</a></li>
             <li><a href="https://www.instagram.com">Instagram</a></li>
@@ -32,7 +31,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 VotreNom. Tous droits réservés.</p>
+        <p>&copy; Achref Mechergui 2024</p>
       </div>
     </footer>
   );

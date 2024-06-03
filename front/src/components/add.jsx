@@ -1,61 +1,151 @@
-import React, { useState } from 'react';
-import "../App.css" ;
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+import axios from "axios";
 
 const Add = (props) => {
-     
-    const [newdata,setNewdata] = useState()
-    const [img,setNewimage] = useState('')
-    const [name,setNewname] = useState('')
-    const [description,setNewdescription] = useState('')
+  const [newdata, setNewdata] = useState([]);
+  const [img, setNewimage] = useState("");
+  const [name, setNewname] = useState("");
+  const [description, setNewdescription] = useState("");
+  const [category,setCategory] = useState("")
+  const navigate = useNavigate();
+
+  const hundelnewimage = (e) => {
+    setNewimage(e.target.value);
+  };
+
+  const hundelnewname = (e) => {
+    setNewname(e.target.value);
+  };
+
+  const hundelnewdescription = (e) => {
+    setNewdescription(e.target.value);
+  };
 
 
-    const hundelnewimage = (e)=>{
-        setNewimage(e.target.value)
+  const hundelcategory = (e)=>{
+    setCategory(e.target.value)
+  }
+
+  const addnewrecipe = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/add", {
+        img,
+        name,
+        description,
+        category
+      });
+      setNewdata([...props.copyofdata, response.data]); /// "props.copyofdata" is the current data from main component
+      props.newdata(newdata); ///// give the function hundelnewdata in the parent component the data after changing
+
+      navigate("/");
+    } catch (error) {
+      console.error(error);
     }
+  };
 
-    const hundelnewname = (e)=>{
-     setNewname(e.target.value)
-    }
-
-    const hundelnewdescription = (e)=>{
-     setNewdescription(e.target.value)
-    }
-
-    const addnewrecipe = ()=>{
-        axios.post('http://localhost:5000/add',{img,name,description}).then((res)=>{
-            setNewdata ([...props.copyofdata,res.data])
-            props.newdata(newdata)
-
-        })
-    }
-
-
-
-    return (
-        <form className=' w-50 mx-auto addform '>
-        <div class="row mb-3">
-          <label for="inputEmail3"  class="col-sm-2 col-form-label fw-semibold">Image :</label>
-          <div class="col-sm-10">
-            <input onChange={(e)=>{hundelnewimage(e)}} placeholder='Put the url of the image...' type="text" class="form-control" id="inputEmail3"/>
-          </div>
+  return (
+    <div className=" w-50 mx-auto addform ">
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label fw-semibold">
+          Image :
+        </label>
+        <div class="col-sm-10">
+          <input
+            onChange={(e) => {
+              hundelnewimage(e);
+            }}
+            placeholder="Put the url of the image..."
+            type="text"
+            class="form-control"
+            id="inputEmail3"
+          />
         </div>
-        <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-2 col-form-label fw-semibold">Name :</label>
-          <div class="col-sm-10">
-            <input onChange={(e)=>{hundelnewname(e)}} placeholder='Put the Name of Recipe...' type="text" class="form-control" id="inputPassword3"/>
-          </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label fw-semibold">
+          Name :
+        </label>
+        <div class="col-sm-10">
+          <input
+            onChange={(e) => {
+              hundelnewname(e);
+            }}
+            placeholder="Put the Name of Recipe..."
+            type="text"
+            class="form-control"
+            id="inputPassword3"
+          />
         </div>
-        <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-2 col-form-label fw-semibold">Description:</label>
-          <div class="col-sm-10">
-            <input onChange={(e)=>{hundelnewdescription(e)}} type="text" placeholder='Put the Description of the recipe...' class="form-control" id="inputPassword3"/>
-          </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label fw-semibold">
+          Description:
+        </label>
+        <div class="col-sm-10">
+          <input
+            onChange={(e) => {
+              hundelnewdescription(e);
+            }}
+            type="text"
+            placeholder="Put the Description of the recipe..."
+            class="form-control"
+            id="inputPassword3"
+          />
         </div>
-       
-        <button onClick={()=>{addnewrecipe()}} type="submit" class="btn btn-primary mt-4">Add New Recipe</button>
-      </form>
-    );
-}
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <label className="fw-bold" htmlFor="recipe-gender">You must specify the category :</label>
+
+<select onChange={(e)=>{hundelcategory(e)}} className="btn btn-danger" value={category} style={{marginRight:'50px', marginLeft:'10px'}} name="recipes" id="recipe-gender">
+  <option value="">Choose Here : </option>
+  <option value="other recipes">other recipes</option>
+  <option value="pasta">pasta</option>
+  <option value="meat">meat</option>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <button
+        onClick={() => {
+          addnewrecipe();
+        }}
+        type="submit"
+        class="btn btn-primary ms-4  "
+      >
+        Add New Recipe
+      </button>
+    </div>
+  );
+};
 
 export default Add;
